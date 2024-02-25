@@ -1,50 +1,42 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { allCars } from './carsOperations';
+import { createSlice } from "@reduxjs/toolkit";
+import { allCars, allCarsIsEmptyLoadMoreBtn } from "./carsOperations";
 
 let cars = [];
-let carsHeart = [];
+let carHeart = [];
 
 const carsSlice = createSlice({
-  name: 'cars',
+  name: "cars",
   initialState: {
+    page: 1,
     cars: [],
-    carsHeartPersist: [],
+    isEmptyLoadMore: false,
+    allCarsIsEmptyLoadMore: [],
+    carsHeart: [],
     error: false,
     loading: false,
   },
-  extraReducers: builder =>
+  extraReducers: (builder) =>
     builder
-      .addCase(allCars.pending, state => {
+      .addCase(allCars.pending, (state) => {
         state.error = false;
         if (state.cars.length === 0) {
           state.loading = true;
         }
       })
       .addCase(allCars.fulfilled, (state, action) => {
+        state.page = state.page + 1;
         state.loading = false;
-        if (state.cars.length === 0) {
-          state.cars = action.payload;
-          cars = action.payload;
-          state.carsHeartPersist = action.payload;
-          return;
-        }
-        const items = state.carsHeartPersist.map(car => {
-          const res = state.cars.find(persistCar => persistCar.id === car.id);
-
-          if (!res) {
-            return car;
-          } else {
-            return res;
-          }
-        });
-        state.cars = items;
-        cars = items;
+        state.cars = [...state.cars, ...action.payload];
+        cars = [...cars, ...action.payload];
+      })
+      .addCase(allCarsIsEmptyLoadMoreBtn.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.allCarsIsEmptyLoadMore = action.payload;
       }),
   reducers: {
     filters: (state, { payload: { brand, mileageFrom, mileageTo, price } }) => {
-      state.cars = cars.map(el => {
-        const item = carsHeart.find(elem => elem.id === el.id);
-        console.log(item);
+      state.cars = cars.map((el) => {
+        const item = carHeart.find((elem) => elem.id === el.id);
         if (!item) {
           return el;
         } else {
@@ -52,67 +44,57 @@ const carsSlice = createSlice({
         }
       });
 
-      state.carsHeartPersist = cars.map(el => {
-        const item = carsHeart.find(elem => elem.id === el.id);
-        console.log(item);
-        if (!item) {
-          return el;
-        } else {
-          return item;
-        }
-      });
-
-      state.cars = state.cars.filter(car => {
+      state.cars = state.cars.filter((car) => {
         //=====================================================================
         if (
-          brand === 'all' &&
-          price === 'all' &&
-          mileageFrom === '' &&
-          mileageTo === ''
+          brand === "all" &&
+          price === "all" &&
+          mileageFrom === "" &&
+          mileageTo === ""
         ) {
           return car;
         }
-        if (brand === 'all' && price === 'all' && mileageFrom === '') {
+        if (brand === "all" && price === "all" && mileageFrom === "") {
           return mileageTo >= car.mileage;
         }
-        if (brand === 'all' && price === 'all' && mileageTo === '') {
+        if (brand === "all" && price === "all" && mileageTo === "") {
           return mileageFrom <= car.mileage;
         }
-        if (brand === 'all' && price === 'all') {
+        if (brand === "all" && price === "all") {
           return mileageFrom <= car.mileage && mileageTo >= car.mileage;
         }
-        if (brand === 'all' && mileageFrom === '' && mileageTo === '') {
-          return car.rentalPrice.split('$')[1] === price;
+        if (brand === "all" && mileageFrom === "" && mileageTo === "") {
+          return car.rentalPrice.split("$")[1] === price;
         }
-        if (brand === 'all' && mileageFrom === '') {
+        if (brand === "all" && mileageFrom === "") {
           return (
-            car.rentalPrice.split('$')[1] === price && mileageTo >= car.mileage
+            car.rentalPrice.split("$")[1] === price && mileageTo >= car.mileage
           );
         }
-        if (brand === 'all' && mileageTo === '') {
+        if (brand === "all" && mileageTo === "") {
           return (
-            car.rentalPrice.split('$')[1] === price &&
+            car.rentalPrice.split("$")[1] === price &&
             mileageFrom <= car.mileage
           );
         }
-        if (brand === 'all') {
+        if (brand === "all") {
           return (
-            car.rentalPrice.split('$')[1] === price &&
+            car.rentalPrice.split("$")[1] === price &&
             mileageFrom <= car.mileage &&
             mileageTo >= car.mileage
           );
         }
         //===========================================================================
-        if (price === 'all' && mileageFrom === '' && mileageTo === '') {
+        if (price === "all" && mileageFrom === "" && mileageTo === "") {
           return car.make.toLowerCase() === brand;
         }
-        if (price === 'all' && mileageFrom === '') {
+        if (price === "all" && mileageFrom === "") {
           return car.make.toLowerCase() === brand && mileageTo >= car.mileage;
         }
-        if (price === 'all' && mileageTo === '') {
+        if (price === "all" && mileageTo === "") {
           return car.make.toLowerCase() === brand && mileageFrom <= car.mileage;
         }
-        if (price === 'all') {
+        if (price === "all") {
           return (
             car.make.toLowerCase() === brand &&
             mileageFrom <= car.mileage &&
@@ -122,7 +104,7 @@ const carsSlice = createSlice({
         //=============================================================================
         return (
           car.make.toLowerCase() === brand &&
-          car.rentalPrice.split('$')[1] === price &&
+          car.rentalPrice.split("$")[1] === price &&
           mileageFrom <= car.mileage &&
           mileageTo >= car.mileage
         );
@@ -130,19 +112,18 @@ const carsSlice = createSlice({
     },
     iconColor: (state, action) => {
       const { payload: id } = action;
-      const res = state.cars.map(car => {
+      const res = state.cars.map((car) => {
         if (car.id === id) {
           if (car.fill) {
             delete car.fill;
           } else {
-            car.fill = '#3470ff';
+            car.fill = "#3470ff";
           }
         }
         return car;
       });
-
-      state.cars = res;
-      carsHeart = res;
+      state.carsHeart = res;
+      carHeart = res;
     },
   },
 });
