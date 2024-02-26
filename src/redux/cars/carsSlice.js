@@ -30,7 +30,6 @@ const carsSlice = createSlice({
         cars = [...cars, ...action.payload];
       })
       .addCase(allCarsIsEmptyLoadMoreBtn.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.allCarsIsEmptyLoadMore = action.payload;
       }),
   reducers: {

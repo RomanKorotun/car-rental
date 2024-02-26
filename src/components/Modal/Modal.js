@@ -52,7 +52,6 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
-  console.log(car);
   return (
     <Modal
       isOpen={isModalOpen}

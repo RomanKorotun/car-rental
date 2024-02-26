@@ -12,7 +12,6 @@ export const allCars = createAsyncThunk(
         limit: 12,
       });
       const response = await axios.get(`/adverts?${params}`);
-      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
