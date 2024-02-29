@@ -31,7 +31,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerPage = styled.div`
-  min-height: 61vh;
+  min-height: 56vh;
   min-width: 320px;
   max-width: 428px;
   padding-left: 16px;
@@ -43,6 +43,7 @@ export const ContainerPage = styled.div`
   }
   @media only screen and (min-width: 1158px) {
     max-width: 1158px;
+    min-height: 61vh;
   }
 `;
 
