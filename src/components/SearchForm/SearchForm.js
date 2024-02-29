@@ -1,6 +1,6 @@
-import { Formik } from 'formik';
-import { filters } from '../../redux/cars/carsSlice';
-import { useDispatch } from 'react-redux';
+import { Formik } from "formik";
+import { filters } from "../../redux/cars/carsSlice";
+import { useDispatch } from "react-redux";
 import {
   FieldStyledBrand,
   FieldStyledMileageFrom,
@@ -19,19 +19,19 @@ import {
   FormStyled,
   AbsoluteFrom,
   AbsoluteTo,
-} from './SearchForm.styled';
+} from "./SearchForm.styled";
 
 export const SearchForm = () => {
   const dispatch = useDispatch();
   return (
     <Formik
       initialValues={{
-        brand: 'all',
-        price: 'all',
-        mileageFrom: '',
-        mileageTo: '',
+        brand: "all",
+        price: "all",
+        mileageFrom: "",
+        mileageTo: "",
       }}
-      onSubmit={values => {
+      onSubmit={(values) => {
         dispatch(filters(values));
       }}
     >

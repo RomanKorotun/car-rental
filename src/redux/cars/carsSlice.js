@@ -7,7 +7,7 @@ const carsSlice = createSlice({
     page: 1,
     cars: [],
     allCarsIsEmptyLoadMore: [],
-    carsHeart: [],
+    // carsHeart: [],
     allCars: [],
     error: false,
     loading: false,

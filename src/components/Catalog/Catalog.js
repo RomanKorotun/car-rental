@@ -22,11 +22,7 @@ export const Catalog = () => {
     }
   }, [dispatch, page, cars]);
 
-  console.log(page);
-  console.log(allCarsIsEmptyLoadMore);
-
   const isEmptyLoadMore = page <= Math.ceil(allCarsIsEmptyLoadMore.length / 12);
-  console.log(isEmptyLoadMore);
 
   return (
     <Section>
