@@ -1,17 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { allCars, allCarsIsEmptyLoadMoreBtn } from "./carsOperations";
 
-let cars = [];
-let carHeart = [];
-
 const carsSlice = createSlice({
   name: "cars",
   initialState: {
     page: 1,
     cars: [],
-    isEmptyLoadMore: false,
     allCarsIsEmptyLoadMore: [],
     carsHeart: [],
+    allCars: [],
     error: false,
     loading: false,
   },
@@ -27,23 +24,14 @@ const carsSlice = createSlice({
         state.page = state.page + 1;
         state.loading = false;
         state.cars = [...state.cars, ...action.payload];
-        cars = [...cars, ...action.payload];
+        state.allCars = [...state.allCars, ...action.payload];
       })
       .addCase(allCarsIsEmptyLoadMoreBtn.fulfilled, (state, action) => {
         state.allCarsIsEmptyLoadMore = action.payload;
       }),
   reducers: {
     filters: (state, { payload: { brand, mileageFrom, mileageTo, price } }) => {
-      state.cars = cars.map((el) => {
-        const item = carHeart.find((elem) => elem.id === el.id);
-        if (!item) {
-          return el;
-        } else {
-          return item;
-        }
-      });
-
-      state.cars = state.cars.filter((car) => {
+      state.cars = state.allCars.filter((car) => {
         //=====================================================================
         if (
           brand === "all" &&
@@ -59,12 +47,13 @@ const carsSlice = createSlice({
         if (brand === "all" && price === "all" && mileageTo === "") {
           return mileageFrom <= car.mileage;
         }
-        if (brand === "all" && price === "all") {
-          return mileageFrom <= car.mileage && mileageTo >= car.mileage;
-        }
         if (brand === "all" && mileageFrom === "" && mileageTo === "") {
           return car.rentalPrice.split("$")[1] === price;
         }
+        if (brand === "all" && price === "all") {
+          return mileageFrom <= car.mileage && mileageTo >= car.mileage;
+        }
+
         if (brand === "all" && mileageFrom === "") {
           return (
             car.rentalPrice.split("$")[1] === price && mileageTo >= car.mileage
@@ -101,6 +90,13 @@ const carsSlice = createSlice({
           );
         }
         //=============================================================================
+        if (mileageFrom === "" && mileageTo === "") {
+          return (
+            car.make.toLowerCase() === brand &&
+            car.rentalPrice.split("$")[1] === price
+          );
+        }
+        //=============================================================================
         return (
           car.make.toLowerCase() === brand &&
           car.rentalPrice.split("$")[1] === price &&
@@ -109,9 +105,12 @@ const carsSlice = createSlice({
         );
       });
     },
+
     iconColor: (state, action) => {
-      const { payload: id } = action;
-      const res = state.cars.map((car) => {
+      const {
+        payload: { id },
+      } = action;
+      state.cars = state.cars.map((car) => {
         if (car.id === id) {
           if (car.fill) {
             delete car.fill;
@@ -121,8 +120,17 @@ const carsSlice = createSlice({
         }
         return car;
       });
-      state.carsHeart = res;
-      carHeart = res;
+
+      state.allCars = state.allCars.map((car) => {
+        if (car.id === id) {
+          if (car.fill) {
+            delete car.fill;
+          } else {
+            car.fill = "#3470ff";
+          }
+        }
+        return car;
+      });
     },
   },
 });

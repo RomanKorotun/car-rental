@@ -4,8 +4,8 @@ import { MessageInfoFavorite } from "../Message";
 import { useCars } from "../../hooks/useCars";
 import { LinkStyledFavorite } from "./Favorite.styled";
 export const Favorite = () => {
-  const { cars } = useCars();
-  const carsHearts = cars.filter((el) => el.fill);
+  const { allCars } = useCars();
+  const carsHearts = allCars.filter((car) => car.fill);
   return (
     <Section>
       <ContainerPage>

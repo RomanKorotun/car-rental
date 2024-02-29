@@ -15,7 +15,7 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cars"],
+  whitelist: ["cars", "allCars", "allCarsIsEmptyLoadMore", "page"],
 };
 
 const persistedCarsReduser = persistReducer(persistConfig, carsReduser);

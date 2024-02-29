@@ -13,8 +13,7 @@ import { Loader } from "../Loader/Loader";
 import { LoadMore } from "../LoadMore/LoadMore";
 
 export const Catalog = () => {
-  const { cars, carsHeart, error, loading, page, allCarsIsEmptyLoadMore } =
-    useCars();
+  const { cars, error, loading, page, allCarsIsEmptyLoadMore } = useCars();
   const dispatch = useDispatch();
   useEffect(() => {
     if (page === 1 && cars.length === 0) {
@@ -23,16 +22,11 @@ export const Catalog = () => {
     }
   }, [dispatch, page, cars]);
 
-  const newCars = cars.map((el) => {
-    const item = carsHeart.find((elem) => elem.id === el.id);
-    if (!item) {
-      return el;
-    } else {
-      return item;
-    }
-  });
+  console.log(page);
+  console.log(allCarsIsEmptyLoadMore);
 
   const isEmptyLoadMore = page <= Math.ceil(allCarsIsEmptyLoadMore.length / 12);
+  console.log(isEmptyLoadMore);
 
   return (
     <Section>
@@ -40,8 +34,8 @@ export const Catalog = () => {
         <SearchForm />
         {loading && <Loader />}
         {error && <div>Error...</div>}
-        {newCars.length > 0 && <CardList cars={newCars} />}
-        {newCars.length === 0 && !loading && (
+        {cars.length > 0 && <CardList cars={cars} />}
+        {cars.length === 0 && !loading && (
           <MessageInfoCatalog>
             Sorry, no matches were found for your query Please try again.
           </MessageInfoCatalog>

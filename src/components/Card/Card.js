@@ -34,7 +34,7 @@ export const Card = ({ car }) => {
     <>
       <div>
         <Img src={car.img} alt="car" width="274" height="180" />
-        <Svg onClick={() => dispatch(iconColor(car.id))} $fill={car.fill}>
+        <Svg onClick={() => dispatch(iconColor(car))} $fill={car.fill}>
           <use href={`${sprite}#icon-heart`}></use>
         </Svg>
         <CardWrapper>
