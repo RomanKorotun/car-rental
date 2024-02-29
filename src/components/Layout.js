@@ -31,7 +31,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerPage = styled.div`
-  min-height: 420px;
+  min-height: 61vh;
   min-width: 320px;
   max-width: 428px;
   padding-left: 16px;

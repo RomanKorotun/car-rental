@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HomeImageSection = styled.section`
   background-image: linear-gradient(
@@ -7,7 +7,7 @@ export const HomeImageSection = styled.section`
     ),
     url(https://th.bing.com/th/id/R.0a09a09506e49097647ada8984440c19?rik=hUtXKONzgYP7EA&pid=ImgRaw&r=0);
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 79vh;
   background-position: center;
   background-size: cover;
   max-width: 428px;
