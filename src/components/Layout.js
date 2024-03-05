@@ -46,7 +46,13 @@ export const ContainerPage = styled.div`
 `;
 
 export const Section = styled.section`
-  height: 77vh;
+  min-height: 77vh;
+  @media only screen and (min-width: 768px) {
+    min-height: 76vh;
+  }
+  @media only screen and (min-width: 1158px) {
+    min-height: 79vh;
+  }
   padding-top: 60px;
   padding-bottom: 60px;
 `;
