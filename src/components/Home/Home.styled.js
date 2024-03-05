@@ -7,7 +7,13 @@ export const HomeImageSection = styled.section`
     ),
     url(https://th.bing.com/th/id/R.0a09a09506e49097647ada8984440c19?rik=hUtXKONzgYP7EA&pid=ImgRaw&r=0);
   background-repeat: no-repeat;
-  height: 77vh;
+  min-height: 77vh;
+  @media only screen and (min-width: 768px) {
+    min-height: 76vh;
+  }
+  @media only screen and (min-width: 1158px) {
+    min-height: 79vh;
+  }
   background-position: center;
   background-size: cover;
   max-width: 428px;
