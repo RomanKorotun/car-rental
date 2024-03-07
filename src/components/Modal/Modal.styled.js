@@ -1,18 +1,38 @@
 import styled from "styled-components";
+import Modal from "react-modal";
 
-export const ModalCard = styled.div`
+export const CustomModal = styled(Modal)`
   position: relative;
-  padding: 10px;
-  width: 500px;
-  background: #fff;
+  border-radius: 24px;
+  padding: 40px;
+
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  border: 1px solid blue;
+  transform: translate(-50%, -50%);
+  @media only screen and (max-width: 427px) {
+    width: 90%;
+  }
+  @media only screen and (min-width: 428px) {
+    width: 382px;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 541px;
+  }
+  @media only screen and (min-width: 1158px) {
+    width: 541px;
+  }
 `;
 
 export const SvgModal = styled.svg`
   position: absolute;
   stroke-width: 1.8px;
   stroke: #121417;
-  top: -10px;
-  right: -10px;
+  top: 16px;
+  right: 16px;
   width: 24px;
   height: 24px;
   cursor: pointer;
@@ -143,10 +163,6 @@ export const AccessoriesItemModal = styled.li`
   font-size: 12px;
   line-height: 1.5;
   color: rgba(18, 20, 23, 0.5);
-`;
-
-export const RentalCardModal = styled.div`
-  margin-bottom: 24px;
 `;
 
 export const RentalTitleModal = styled.div`

@@ -12,6 +12,7 @@ import {
   CarBrandModal,
   CityModal,
   CountryModal,
+  CustomModal,
   DescriptionModal,
   EngineSizeModal,
   FuelConsumptionModal,
@@ -22,11 +23,9 @@ import {
   InfoCarModalSecond,
   MileageAccentModal,
   MileageModal,
-  ModalCard,
   ModelModal,
   PriceAccentModal,
   PriceModal,
-  RentalCardModal,
   RentalFlexModal,
   RentalTitleModal,
   SecurityModal,
@@ -38,28 +37,16 @@ import {
   YearModal,
 } from "./Modal.styled";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -46%)",
-  },
-};
-
 Modal.setAppElement("#root");
 
 export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
   return (
-    <Modal
+    <CustomModal
       isOpen={isModalOpen}
       onRequestClose={onCloseModal}
-      style={customStyles}
       contentLabel="Example Modal"
     >
-      <ModalCard>
+      <div>
         <ImgModal src={car.img} alt={car.make} />
         <SvgModal onClick={onCloseModal}>
           <use href={`${sprite}#icon-x`}></use>
@@ -107,7 +94,7 @@ export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
             ))}
           </AccessoriesListModal>
         </AccessoriesCardModal>
-        <RentalCardModal>
+        <div>
           <RentalTitleModal>Rental Conditions: </RentalTitleModal>
           <RentalFlexModal>
             <AgeModal>
@@ -127,8 +114,8 @@ export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
             </PriceModal>
           </RentalFlexModal>
           <ButtonModal>Rental car</ButtonModal>
-        </RentalCardModal>
-      </ModalCard>
-    </Modal>
+        </div>
+      </div>
+    </CustomModal>
   );
 };
