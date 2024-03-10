@@ -113,7 +113,7 @@ export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
               Price:&nbsp;<PriceAccentModal>{car.rentalPrice}</PriceAccentModal>
             </PriceModal>
           </RentalFlexModal>
-          <ButtonModal>Rental car</ButtonModal>
+          <ButtonModal href="tel:+380730000000">Rental car</ButtonModal>
         </div>
       </div>
     </CustomModal>

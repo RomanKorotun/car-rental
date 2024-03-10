@@ -4,8 +4,6 @@ import Modal from "react-modal";
 export const CustomModal = styled(Modal)`
   position: relative;
   border-radius: 24px;
-  padding: 40px;
-
   background-color: #fff;
   top: 50%;
   left: 50%;
@@ -13,13 +11,17 @@ export const CustomModal = styled(Modal)`
   bottom: auto;
   border: 1px solid blue;
   transform: translate(-50%, -50%);
+  overflow: auto;
   @media only screen and (max-width: 427px) {
+    padding: 39px;
     width: 90%;
   }
   @media only screen and (min-width: 428px) {
+    padding: 39px;
     width: 382px;
   }
   @media only screen and (min-width: 768px) {
+    padding: 39px;
     width: 541px;
   }
   @media only screen and (min-width: 1158px) {
@@ -40,8 +42,8 @@ export const SvgModal = styled.svg`
 
 export const ImgModal = styled.img`
   border-radius: 14px;
-  width: 100%;
-  height: 278px;
+  width: 461px;
+  height: 248px;
   margin-bottom: 14px;
 `;
 
@@ -155,10 +157,11 @@ export const AccessoriesTitleModal = styled.div`
 `;
 
 export const AccessoriesListModal = styled.ul`
-  display: flex;
+  display: block;
 `;
 
 export const AccessoriesItemModal = styled.li`
+  display: inline;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
@@ -261,7 +264,7 @@ export const PriceAccentModal = styled.span`
   color: #3470ff;
 `;
 
-export const ButtonModal = styled.button`
+export const ButtonModal = styled.a`
   border-radius: 12px;
   border: none;
   padding: 12px 50px;
