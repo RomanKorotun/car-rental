@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import { filters, resetFilters } from "../../redux/cars/carsSlice";
+import { filters } from "../../redux/cars/carsSlice";
 import { useDispatch } from "react-redux";
 import {
   FieldStyledBrand,
@@ -34,6 +34,7 @@ export const SearchForm = () => {
         mileageTo: "",
       }}
       onSubmit={(values) => {
+        console.log(values);
         dispatch(filters(values));
       }}
     >

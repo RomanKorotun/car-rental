@@ -144,4 +144,4 @@ const carsSlice = createSlice({
 });
 
 export const carsReduser = carsSlice.reducer;
-export const { filters, resetFilters, iconColor } = carsSlice.actions;
+export const { filters, iconColor } = carsSlice.actions;
