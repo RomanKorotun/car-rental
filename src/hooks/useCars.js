@@ -7,6 +7,8 @@ import {
   selectCarsHeart,
   selectAllCarsIsEmptyLoadMore,
   selectAllCars,
+  selectBrand,
+  selectPrice,
 } from "../redux/cars/carsSelectors";
 
 export const useCars = () => {
@@ -17,6 +19,8 @@ export const useCars = () => {
   const carsHeart = useSelector(selectCarsHeart);
   const allCarsIsEmptyLoadMore = useSelector(selectAllCarsIsEmptyLoadMore);
   const allCars = useSelector(selectAllCars);
+  const brand = useSelector(selectBrand);
+  const price = useSelector(selectPrice);
 
   return {
     cars,
@@ -26,5 +30,7 @@ export const useCars = () => {
     page,
     allCarsIsEmptyLoadMore,
     allCars,
+    brand,
+    price,
   };
 };

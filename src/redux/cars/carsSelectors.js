@@ -6,3 +6,5 @@ export const selectCarsHeart = (state) => state.carsHeart;
 export const selectAllCarsIsEmptyLoadMore = (state) =>
   state.allCarsIsEmptyLoadMore;
 export const selectAllCars = (state) => state.allCars;
+export const selectBrand = (state) => state.brandFormik;
+export const selectPrice = (state) => state.priceFormik;

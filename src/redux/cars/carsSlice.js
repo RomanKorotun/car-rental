@@ -7,10 +7,11 @@ const carsSlice = createSlice({
     page: 1,
     cars: [],
     allCarsIsEmptyLoadMore: [],
-    // carsHeart: [],
     allCars: [],
     error: false,
     loading: false,
+    brandFormik: "all",
+    priceFormik: "all",
   },
   extraReducers: (builder) =>
     builder
@@ -32,6 +33,13 @@ const carsSlice = createSlice({
   reducers: {
     filters: (state, { payload: { brand, mileageFrom, mileageTo, price } }) => {
       state.cars = state.allCars.filter((car) => {
+        //==============================================================
+        if (brand) {
+          state.brandFormik = brand;
+        }
+        if (price) {
+          state.priceFormik = price;
+        }
         //=====================================================================
         if (
           brand === "all" &&
@@ -136,4 +144,4 @@ const carsSlice = createSlice({
 });
 
 export const carsReduser = carsSlice.reducer;
-export const { filters, iconColor } = carsSlice.actions;
+export const { filters, resetFilters, iconColor } = carsSlice.actions;

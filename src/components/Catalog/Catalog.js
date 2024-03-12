@@ -12,7 +12,8 @@ import { Loader } from "../Loader/Loader";
 import { LoadMore } from "../LoadMore/LoadMore";
 
 export const Catalog = () => {
-  const { cars, error, loading, page, allCarsIsEmptyLoadMore } = useCars();
+  const { cars, error, loading, page, allCarsIsEmptyLoadMore, brand, price } =
+    useCars();
   const dispatch = useDispatch();
   useEffect(() => {
     if (page === 1 && cars.length === 0) {
@@ -34,7 +35,10 @@ export const Catalog = () => {
           Sorry, no matches were found for your query Please try again.
         </MessageInfoCatalog>
       )}
-      {isEmptyLoadMore && <LoadMore />}
+      {isEmptyLoadMore &&
+        cars.length > 0 &&
+        brand === "all" &&
+        price === "all" && <LoadMore />}
     </>
   );
 };
