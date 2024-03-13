@@ -24,7 +24,6 @@ const persistConfig = {
     "priceFormik",
     "mileageFromFormik",
     "mileageToFormik",
-    "reset",
   ],
 };
 
