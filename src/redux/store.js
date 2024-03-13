@@ -22,6 +22,9 @@ const persistConfig = {
     "page",
     "brandFormik",
     "priceFormik",
+    "mileageFromFormik",
+    "mileageToFormik",
+    "reset",
   ],
 };
 

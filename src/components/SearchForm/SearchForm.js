@@ -1,4 +1,5 @@
 import { Formik } from "formik";
+import * as Yup from "yup";
 import { filters } from "../../redux/cars/carsSlice";
 import { useDispatch } from "react-redux";
 import {
@@ -22,19 +23,40 @@ import {
 } from "./SearchForm.styled";
 import { useCars } from "../../hooks/useCars";
 
+const regexp = "^[0-9]+";
+
+const validShema = Yup.object().shape({
+  mileageFrom: Yup.string().matches(regexp),
+  mileageTo: Yup.string().matches(regexp),
+});
+
 export const SearchForm = () => {
   const dispatch = useDispatch();
-  const { brand, price } = useCars();
+  const { brand, price, mileageFrom, mileageTo } = useCars();
+
   return (
     <Formik
       initialValues={{
         brand: brand,
         price: price,
-        mileageFrom: "",
-        mileageTo: "",
+        mileageFrom: mileageFrom,
+        mileageTo: mileageTo,
       }}
-      onSubmit={(values) => {
-        console.log(values);
+      validationSchema={validShema}
+      onSubmit={(values, helpers) => {
+        if (localStorage.getItem("reset")) {
+          helpers.resetForm();
+          dispatch(
+            filters({
+              brand: "all",
+              price: "all",
+              mileageFrom: "",
+              mileageTo: "",
+            })
+          );
+          localStorage.removeItem("reset");
+          return;
+        }
         dispatch(filters(values));
       }}
     >
@@ -96,14 +118,20 @@ export const SearchForm = () => {
           <MileageCard>
             <TitleMileage> Сar mileage / km</TitleMileage>
             <div>
-              <FieldStyledMileageFrom type="number" name="mileageFrom" />
-              <FieldStyledMileageTo type="number" name="mileageTo" />
+              <FieldStyledMileageFrom type="string" name="mileageFrom" />
+              <FieldStyledMileageTo type="string" name="mileageTo" />
             </div>
           </MileageCard>
           <AbsoluteFrom>From</AbsoluteFrom>
           <AbsoluteTo>To</AbsoluteTo>
         </LabelStyledMileage>
         <BtnForm type="submit">Search</BtnForm>
+        <BtnForm
+          onClick={() => localStorage.setItem("reset", true)}
+          type="submit"
+        >
+          Reset
+        </BtnForm>
       </FormStyled>
     </Formik>
   );

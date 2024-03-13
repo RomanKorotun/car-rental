@@ -12,6 +12,8 @@ const carsSlice = createSlice({
     loading: false,
     brandFormik: "all",
     priceFormik: "all",
+    mileageFromFormik: "",
+    mileageToFormik: "",
   },
   extraReducers: (builder) =>
     builder
@@ -39,6 +41,12 @@ const carsSlice = createSlice({
         }
         if (price) {
           state.priceFormik = price;
+        }
+        if (mileageFrom || mileageFrom === "") {
+          state.mileageFromFormik = mileageFrom;
+        }
+        if (mileageTo || mileageTo === "") {
+          state.mileageToFormik = mileageTo;
         }
         //=====================================================================
         if (
@@ -144,4 +152,4 @@ const carsSlice = createSlice({
 });
 
 export const carsReduser = carsSlice.reducer;
-export const { filters, iconColor } = carsSlice.actions;
+export const { filters, resetFilters, iconColor } = carsSlice.actions;

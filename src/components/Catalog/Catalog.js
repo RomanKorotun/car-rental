@@ -12,8 +12,17 @@ import { Loader } from "../Loader/Loader";
 import { LoadMore } from "../LoadMore/LoadMore";
 
 export const Catalog = () => {
-  const { cars, error, loading, page, allCarsIsEmptyLoadMore, brand, price } =
-    useCars();
+  const {
+    cars,
+    error,
+    loading,
+    page,
+    allCarsIsEmptyLoadMore,
+    brand,
+    price,
+    mileageFrom,
+    mileageTo,
+  } = useCars();
   const dispatch = useDispatch();
   useEffect(() => {
     if (page === 1 && cars.length === 0) {
@@ -38,7 +47,9 @@ export const Catalog = () => {
       {isEmptyLoadMore &&
         cars.length > 0 &&
         brand === "all" &&
-        price === "all" && <LoadMore />}
+        price === "all" &&
+        mileageFrom === "" &&
+        mileageTo === "" && <LoadMore />}
     </>
   );
 };

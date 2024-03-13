@@ -8,3 +8,5 @@ export const selectAllCarsIsEmptyLoadMore = (state) =>
 export const selectAllCars = (state) => state.allCars;
 export const selectBrand = (state) => state.brandFormik;
 export const selectPrice = (state) => state.priceFormik;
+export const selectMileageFrom = (state) => state.mileageFromFormik;
+export const selectMileageTo = (state) => state.mileageToFormik;
