@@ -40,6 +40,8 @@ import {
 Modal.setAppElement("#root");
 
 export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
+  const mileageNew = [...car.mileage.toString().split("")];
+  mileageNew.splice(1, 0, ",");
   return (
     <CustomModal
       isOpen={isModalOpen}
@@ -107,7 +109,7 @@ export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
             <SecurityModal>{car.rentalConditions.slice(38)}</SecurityModal>
             <MileageModal>
               Mileage:&nbsp;
-              <MileageAccentModal>{car.mileage}</MileageAccentModal>
+              <MileageAccentModal>{mileageNew.join("")}</MileageAccentModal>
             </MileageModal>
             <PriceModal>
               Price:&nbsp;<PriceAccentModal>{car.rentalPrice}</PriceAccentModal>
