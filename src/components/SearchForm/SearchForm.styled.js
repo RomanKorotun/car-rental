@@ -147,6 +147,9 @@ export const FieldStyledMileageTo = styled(Field)`
 
 //======================Btn=================
 export const BtnForm = styled.button`
+  @media only screen and (max-width: 427px) {
+    width: 132px;
+  }
   border: none;
   background-color: #3470ff;
   align-self: flex-end;
