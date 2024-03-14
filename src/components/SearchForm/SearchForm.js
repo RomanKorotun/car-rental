@@ -1,4 +1,4 @@
-import { Formik } from "formik";
+import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 import { filters } from "../../redux/cars/carsSlice";
 import { useDispatch } from "react-redux";
@@ -33,8 +33,6 @@ const validShema = Yup.object().shape({
 export const SearchForm = () => {
   const dispatch = useDispatch();
   const { brand, price, mileageFrom, mileageTo } = useCars();
-  console.log(mileageFrom);
-
   const handleClick = () => {
     dispatch(
       filters({
@@ -63,7 +61,7 @@ export const SearchForm = () => {
         <LabelBrand>
           <BrandCard>
             <TitleBrand> Car brand</TitleBrand>
-            <FieldStyledBrand component="select" name="brand" value={brand}>
+            <FieldStyledBrand component="select" name="brand">
               <option value="all">All brands</option>
               <option value="buick">Buick</option>
               <option value="volvo">Volvo</option>
@@ -93,7 +91,7 @@ export const SearchForm = () => {
         <LabelPrice>
           <PriceCard>
             <TitlePrice>Price,$ / 1 hour</TitlePrice>
-            <FieldStyledPrice component="select" name="price" value={price}>
+            <FieldStyledPrice component="select" name="price">
               <option value="all">All prices</option>
               <option value="25">25</option>
               <option value="30">30</option>

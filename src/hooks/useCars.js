@@ -4,7 +4,6 @@ import {
   selectError,
   selectLoading,
   selectPage,
-  selectCarsHeart,
   selectAllCarsIsEmptyLoadMore,
   selectAllCars,
   selectBrand,
@@ -18,7 +17,6 @@ export const useCars = () => {
   const error = useSelector(selectError);
   const loading = useSelector(selectLoading);
   const page = useSelector(selectPage);
-  const carsHeart = useSelector(selectCarsHeart);
   const allCarsIsEmptyLoadMore = useSelector(selectAllCarsIsEmptyLoadMore);
   const allCars = useSelector(selectAllCars);
   const brand = useSelector(selectBrand);
@@ -28,7 +26,6 @@ export const useCars = () => {
 
   return {
     cars,
-    carsHeart,
     error,
     loading,
     page,
