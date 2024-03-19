@@ -41,7 +41,7 @@ export const Catalog = () => {
       {cars.length > 0 && <CardList cars={cars} />}
       {cars.length === 0 && !loading && (
         <MessageInfoCatalog>
-          Sorry, no matches were found for your query Please try again.
+          Sorry, no matches were found for your query. Please try again.
         </MessageInfoCatalog>
       )}
       {isEmptyLoadMore &&
