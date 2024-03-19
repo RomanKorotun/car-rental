@@ -37,7 +37,6 @@ const carsSlice = createSlice({
       state.cars = state.allCars.filter((car) => {
         //==============================================================
         if (brand) {
-          console.log(brand);
           state.brandFormik = brand;
         }
         if (price) {

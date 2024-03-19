@@ -180,14 +180,108 @@ export const SearchForm = () => {
   const [mileageFrom, setMileageFrom] = useState(mileageFromPersist);
   const [mileageTo, setMileageTo] = useState(mileageToPersist);
 
+  const mileageFromValue = mileageFrom.split("");
+
+  if (mileageFromValue !== "" && mileageFromValue.length === 4) {
+    if (!mileageFromValue.includes(",")) {
+      mileageFromValue.splice(1, 0, ",");
+    } else {
+      mileageFromValue.splice(1, 1);
+    }
+  }
+
+  if (mileageFromValue !== "" && mileageFromValue.length === 5) {
+    const idx = mileageFromValue.indexOf(",");
+    if (idx === 2) {
+      mileageFromValue.splice(2, 1);
+      mileageFromValue.splice(1, 0, ",");
+    }
+    if (idx === -1) {
+      mileageFromValue.splice(2, 0, ",");
+    }
+  }
+
+  if (mileageFromValue !== "" && mileageFromValue.length === 6) {
+    const idx = mileageFromValue.indexOf(",");
+    if (idx === 1) {
+      mileageFromValue.splice(1, 1);
+      mileageFromValue.splice(2, 0, ",");
+    }
+    if (idx === 3) {
+      mileageFromValue.splice(3, 1);
+      mileageFromValue.splice(2, 0, ",");
+    }
+    if (idx === -1) {
+      mileageFromValue.splice(3, 0, ",");
+    }
+  }
+
+  if (mileageFromValue !== "" && mileageFromValue.length === 7) {
+    const idx = mileageFromValue.indexOf(",");
+    if (idx === 2) {
+      mileageFromValue.splice(2, 1);
+      mileageFromValue.splice(3, 0, ",");
+    }
+  }
+
+  const newMileageFrom = mileageFromValue.filter((item) => item);
+
+  const mileageToValue = mileageTo.split("");
+  if (mileageToValue !== "" && mileageToValue.length === 4) {
+    if (!mileageToValue.includes(",")) {
+      mileageToValue.splice(1, 0, ",");
+    } else {
+      mileageToValue.splice(1, 1);
+    }
+  }
+
+  if (mileageToValue !== "" && mileageToValue.length === 5) {
+    const idx = mileageToValue.indexOf(",");
+    if (idx === 2) {
+      mileageToValue.splice(2, 1);
+      mileageToValue.splice(1, 0, ",");
+    }
+    if (idx === -1) {
+      mileageToValue.splice(2, 0, ",");
+    }
+  }
+
+  if (mileageToValue !== "" && mileageToValue.length === 6) {
+    const idx = mileageToValue.indexOf(",");
+    if (idx === 1) {
+      mileageToValue.splice(1, 1);
+      mileageToValue.splice(2, 0, ",");
+    }
+    if (idx === 3) {
+      mileageToValue.splice(3, 1);
+      mileageToValue.splice(2, 0, ",");
+    }
+    if (idx === -1) {
+      mileageToValue.splice(3, 0, ",");
+    }
+  }
+
+  if (mileageToValue !== "" && mileageToValue.length === 7) {
+    const idx = mileageToValue.indexOf(",");
+    if (idx === 2) {
+      mileageToValue.splice(2, 1);
+      mileageToValue.splice(3, 0, ",");
+    }
+  }
+  const newMileageTo = mileageToValue.filter((item) => item);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const newMileageFrom = mileageFrom.split("").filter((item) => item !== ",");
+    const newMileageTo = mileageTo.split("").filter((item) => item !== ",");
+
     dispatch(
       filters({
         brand,
         price,
-        mileageFrom,
-        mileageTo,
+        mileageFrom: newMileageFrom.join(""),
+        mileageTo: newMileageTo.join(""),
       })
     );
   };
@@ -273,17 +367,17 @@ export const SearchForm = () => {
             <FieldStyledMileageFrom
               type="string"
               name="mileageFrom"
-              value={mileageFrom}
+              value={newMileageFrom.join("")}
               onChange={(e) => setMileageFrom(e.target.value)}
-              pattern="[0-9]+"
+              pattern="^\d*(,)?\d*$"
               title="example: 1500, 2000, 3860..."
             />
             <FieldStyledMileageTo
               type="string"
               name="mileageTo"
-              value={mileageTo}
+              value={newMileageTo.join("")}
               onChange={(e) => setMileageTo(e.target.value)}
-              pattern="[0-9]+"
+              pattern="^\d*(,)?\d*$"
               title="example: 1500, 2000, 3860..."
             />
           </div>
