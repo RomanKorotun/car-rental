@@ -4,7 +4,6 @@ export const FooterStyled = styled.footer`
   padding-top: 24px;
   padding-bottom: 24px;
   border-top: 2px solid black;
-  height: 68px;
 `;
 
 export const FooterFlex = styled.div`

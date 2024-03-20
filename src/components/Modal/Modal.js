@@ -42,6 +42,19 @@ Modal.setAppElement("#root");
 export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
   const mileageNew = [...car.mileage.toString().split("")];
   mileageNew.splice(1, 0, ",");
+  const carRentalPrice = [];
+  if (car.rentalPrice[1]) {
+    carRentalPrice.push(car.rentalPrice[1]);
+  }
+  if (car.rentalPrice[2]) {
+    carRentalPrice.push(car.rentalPrice[2]);
+  }
+  if (car.rentalPrice[3]) {
+    carRentalPrice.push(car.rentalPrice[3]);
+  }
+  if (car.rentalPrice[0]) {
+    carRentalPrice.push(car.rentalPrice[0]);
+  }
   return (
     <CustomModal
       isOpen={isModalOpen}
@@ -113,7 +126,7 @@ export const ModalContainer = ({ car, isModalOpen, onCloseModal }) => {
             </MileageModal>
             <PriceModal>
               Price:&nbsp;
-              <PriceAccentModal>{`${car.rentalPrice[1]}${car.rentalPrice[2]}${car.rentalPrice[0]}`}</PriceAccentModal>
+              <PriceAccentModal>{carRentalPrice.join("")}</PriceAccentModal>
             </PriceModal>
           </RentalFlexModal>
           <ButtonModal href="tel:+380730000000">Rental car</ButtonModal>
