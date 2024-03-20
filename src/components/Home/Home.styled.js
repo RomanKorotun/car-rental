@@ -5,7 +5,7 @@ export const HomeImageSection = styled.section`
       rgba(46, 47, 66, 0.7),
       rgba(46, 47, 66, 0.7)
     ),
-    url(https://th.bing.com/th/id/R.0a09a09506e49097647ada8984440c19?rik=hUtXKONzgYP7EA&pid=ImgRaw&r=0);
+    url(https://autode-static.de/wp-content/uploads/2014/09/-2Style-Sondermodell-f-r-die-Mercedes-A-Klasse-nii3.jpg);
   background-repeat: no-repeat;
   min-height: 77vh;
   @media only screen and (min-width: 768px) {

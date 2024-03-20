@@ -32,8 +32,8 @@ export const SvgModal = styled.svg`
   stroke: #121417;
   cursor: pointer;
   @media only screen and (max-width: 427px) {
-    top: 8px;
-    right: 8px;
+    top: 7px;
+    right: 7px;
     width: 14px;
     height: 14px;
   }
