@@ -13,19 +13,16 @@ export const CustomModal = styled(Modal)`
   transform: translate(-50%, -50%);
   overflow: auto;
   @media only screen and (max-width: 427px) {
-    padding: 39px;
-    width: 90%;
+    padding: 16px;
+    width: 288px;
   }
   @media only screen and (min-width: 428px) {
-    padding: 39px;
+    padding: 17px;
     width: 382px;
   }
-  @media only screen and (min-width: 768px) {
-    padding: 39px;
-    width: 541px;
-  }
   @media only screen and (min-width: 1158px) {
-    width: 541px;
+    padding: 24px;
+    width: 462px;
   }
 `;
 
@@ -33,22 +30,52 @@ export const SvgModal = styled.svg`
   position: absolute;
   stroke-width: 1.8px;
   stroke: #121417;
-  top: 16px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
   cursor: pointer;
+  @media only screen and (max-width: 427px) {
+    top: 8px;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+  }
+  @media only screen and (min-width: 428px) {
+    top: 7px;
+    right: 7px;
+    width: 16px;
+    height: 16px;
+  }
+  @media only screen and (min-width: 1158px) {
+    top: 10px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+  }
 `;
 
 export const ImgModal = styled.img`
   border-radius: 14px;
   width: 461px;
   height: 248px;
-  margin-bottom: 14px;
+  @media only screen and (max-width: 427px) {
+    height: 148px;
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 428px) {
+    height: 198px;
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 1158px) {
+    height: 218px;
+    margin-bottom: 8px;
+  }
 `;
 
 export const BrandCard = styled.div`
-  margin-bottom: 8px;
+  @media only screen and (max-width: 427px) {
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 428px) {
+    margin-bottom: 4px;
+  }
 `;
 
 export const CarBrandModal = styled.span`
@@ -73,7 +100,15 @@ export const YearModal = styled.span`
 `;
 
 export const InfoCarModal = styled.div`
-  margin-bottom: 24px;
+  @media only screen and (max-width: 427px) {
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 428px) {
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 1158px) {
+    margin-bottom: 8px;
+  }
 `;
 
 export const InfoCarModalFirst = styled.div`
@@ -81,7 +116,12 @@ export const InfoCarModalFirst = styled.div`
 `;
 
 export const InfoCarModalSecond = styled.div`
-  margin-bottom: 14px;
+  @media only screen and (max-width: 427px) {
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 428px) {
+    margin-bottom: 4px;
+  }
 `;
 
 export const CityModal = styled.span`
@@ -139,13 +179,29 @@ export const EngineSizeModal = styled.span`
 
 export const DescriptionModal = styled.div`
   font-weight: 400;
-  font-size: 14px;
   line-height: 1.42857;
   color: #121417;
+  @media only screen and (max-width: 427px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 428px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 1158px) {
+    font-size: 13px;
+  }
 `;
 
 export const AccessoriesCardModal = styled.div`
-  margin-bottom: 24px;
+  @media only screen and (max-width: 427px) {
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 428px) {
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 1158px) {
+    margin-bottom: 8px;
+  }
 `;
 
 export const AccessoriesTitleModal = styled.div`
@@ -153,7 +209,12 @@ export const AccessoriesTitleModal = styled.div`
   font-size: 14px;
   line-height: 1.42857;
   color: #121417;
-  margin-bottom: 8px;
+  @media only screen and (max-width: 427px) {
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 428px) {
+    margin-bottom: 4px;
+  }
 `;
 
 export const AccessoriesListModal = styled.ul`
@@ -173,14 +234,29 @@ export const RentalTitleModal = styled.div`
   font-size: 14px;
   line-height: 1.42857;
   color: #121417;
-  margin-bottom: 8px;
+  @media only screen and (max-width: 427px) {
+    margin-bottom: 4px;
+  }
+  @media only screen and (min-width: 428px) {
+    margin-bottom: 4px;
+  }
 `;
 
 export const RentalFlexModal = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
+  @media only screen and (max-width: 427px) {
+    margin-bottom: 4px;
+    gap: 2px;
+  }
+  @media only screen and (min-width: 428px) {
+    margin-bottom: 4px;
+    gap: 2px;
+  }
+  @media only screen and (min-width: 1158px) {
+    margin-bottom: 8px;
+    gap: 4px;
+  }
 `;
 
 export const AgeModal = styled.span`
@@ -265,9 +341,9 @@ export const PriceAccentModal = styled.span`
 `;
 
 export const ButtonModal = styled.a`
+  display: inline-block;
   border-radius: 12px;
   border: none;
-  padding: 12px 50px;
   background-color: #3470ff;
   font-weight: 600;
   font-size: 14px;
@@ -276,5 +352,11 @@ export const ButtonModal = styled.a`
   &:hover,
   :focus {
     background-color: #0b44cd;
+  }
+  @media only screen and (max-width: 427px) {
+    padding: 6px 30px;
+  }
+  @media only screen and (min-width: 428px) {
+    padding: 8px 40px;
   }
 `;
