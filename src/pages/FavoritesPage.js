@@ -11,14 +11,16 @@ const FavoritePage = () => {
       <Section>
         <Container>
           {carsHearts.length > 0 && <Favorite cars={carsHearts} />}
+          {carsHearts.length === 0 && (
+            <MessageInfo>
+              Please go to the{" "}
+              <LinkStyledFavorite to="/catalog">
+                catalog page
+              </LinkStyledFavorite>{" "}
+              to add the car to your favorites category.
+            </MessageInfo>
+          )}
         </Container>
-        {carsHearts.length === 0 && (
-          <MessageInfo>
-            Please go to the{" "}
-            <LinkStyledFavorite to="/catalog">catalog page</LinkStyledFavorite>{" "}
-            to add the car to your favorites category.
-          </MessageInfo>
-        )}
       </Section>
     </main>
   );
