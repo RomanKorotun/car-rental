@@ -1,5 +1,5 @@
 import { Container } from "../Layout";
-import { FooterFlex, FooterStyled } from "./Footer.styled";
+import { CopyrightAuthor, FooterFlex, FooterStyled } from "./Footer.styled";
 
 export const Footer = () => {
   return (
@@ -12,7 +12,7 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Roman Korotun
+            <CopyrightAuthor> Roman Korotun</CopyrightAuthor>
           </a>
         </FooterFlex>
       </Container>

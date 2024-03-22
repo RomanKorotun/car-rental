@@ -20,7 +20,7 @@ export const CustomModal = styled(Modal)`
     padding: 17px;
     width: 382px;
   }
-  @media only screen and (min-width: 1158px) {
+  @media only screen and (min-width: 768px) {
     padding: 24px;
     width: 462px;
   }
@@ -43,7 +43,7 @@ export const SvgModal = styled.svg`
     width: 16px;
     height: 16px;
   }
-  @media only screen and (min-width: 1158px) {
+  @media only screen and (min-width: 768px) {
     top: 10px;
     right: 10px;
     width: 18px;
@@ -63,7 +63,7 @@ export const ImgModal = styled.img`
     height: 198px;
     margin-bottom: 4px;
   }
-  @media only screen and (min-width: 1158px) {
+  @media only screen and (min-width: 768px) {
     height: 218px;
     margin-bottom: 8px;
   }
@@ -106,7 +106,7 @@ export const InfoCarModal = styled.div`
   @media only screen and (min-width: 428px) {
     margin-bottom: 4px;
   }
-  @media only screen and (min-width: 1158px) {
+  @media only screen and (min-width: 768px) {
     margin-bottom: 8px;
   }
 `;
@@ -187,7 +187,7 @@ export const DescriptionModal = styled.div`
   @media only screen and (min-width: 428px) {
     font-size: 12px;
   }
-  @media only screen and (min-width: 1158px) {
+  @media only screen and (min-width: 768px) {
     font-size: 13px;
   }
 `;
@@ -199,7 +199,7 @@ export const AccessoriesCardModal = styled.div`
   @media only screen and (min-width: 428px) {
     margin-bottom: 4px;
   }
-  @media only screen and (min-width: 1158px) {
+  @media only screen and (min-width: 768px) {
     margin-bottom: 8px;
   }
 `;
@@ -253,7 +253,7 @@ export const RentalFlexModal = styled.div`
     margin-bottom: 4px;
     gap: 2px;
   }
-  @media only screen and (min-width: 1158px) {
+  @media only screen and (min-width: 768px) {
     margin-bottom: 8px;
     gap: 4px;
   }

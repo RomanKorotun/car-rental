@@ -29,6 +29,10 @@ const carsSlice = createSlice({
         state.cars = [...state.cars, ...action.payload];
         state.allCars = [...state.allCars, ...action.payload];
       })
+      .addCase(allCars.rejected, (state) => {
+        state.loading = false;
+        state.error = true;
+      })
       .addCase(allCarsIsEmptyLoadMoreBtn.fulfilled, (state, action) => {
         state.allCarsIsEmptyLoadMore = action.payload;
       }),
