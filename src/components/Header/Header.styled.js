@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
   padding-top: 24px;
@@ -31,6 +31,7 @@ export const ListStyled = styled.ul`
 `;
 
 export const NavLinkStyled = styled(NavLink)`
+  transition: color 2500ms;
   &.active {
     color: black;
     text-decoration: underline;
@@ -39,5 +40,4 @@ export const NavLinkStyled = styled(NavLink)`
   :focus {
     color: black;
   }
-  transition: color 250ms;
 `;

@@ -7,6 +7,21 @@ export const Home = styled.section`
       rgba(46, 47, 66, 0.7)
     ),
     url(${HomeImg});
+
+  animation: bgImages 3s;
+  @keyframes bgImages {
+    0% {
+      opacity: 0.8;
+      display: none;
+      background-position: bottom;
+    }
+
+    100% {
+      opacity: 1;
+      display: block;
+    }
+  }
+
   background-repeat: no-repeat;
   min-height: 77vh;
   background-position: center;
