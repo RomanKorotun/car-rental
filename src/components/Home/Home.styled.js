@@ -11,14 +11,7 @@ export const Home = styled.section`
   animation: bgImages 3s;
   @keyframes bgImages {
     0% {
-      opacity: 0.8;
-      display: none;
       background-position: bottom;
-    }
-
-    100% {
-      opacity: 1;
-      display: block;
     }
   }
 
